@@ -1,0 +1,177 @@
+
+
+<style>
+  .search-btn {
+    background-color: #fe424d;
+    color: white;
+    border-radius: 25px;
+    padding: 0 1rem;
+  }
+
+  .search-btn:hover {
+    background-color: #fe424d;
+    color: white;
+  }
+
+  .search-btn i {
+    margin-right: 0.5rem;
+  }
+
+  .search-input {
+    border-radius: 25px;
+    padding: 0.7rem 1rem;
+    font-size: 0.9rem;
+  }
+</style>
+
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+  <div class="container-fluid d-flex">
+    <a class="navbar-brand" href="/products">
+      <i class="fa-solid fa-seedling" id="icon"></i>
+      <span id="brand">Plant~Pulse</span>
+    </a>
+    
+    <!-- Toggler -->
+    <button
+      class="navbar-toggler d-md-none"
+      type="button"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasNavbar"
+      aria-controls="offcanvasNavbar"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Desktop Navbar -->
+    <div class="collapse navbar-collapse d-none d-md-flex" id="navbarNavAltMarkup">
+      <!-- <div class="navbar-nav">
+        <a class="nav-link" id="brand" href="/products">Plant~Pulse</a>
+      </div> -->
+
+
+      <!-- Links and Dropdowns -->
+      <div class="navbar-nav" style="margin-left:170px">
+        <a class="nav-link" href="/products/new">Add New Product</a>
+
+        <!-- Category Dropdown -->
+        <div class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            data-bs-toggle="dropdown"
+          >
+            Categories
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/products/filter?category=fertilizers">Fertilizers</a></li>
+            <li><a class="dropdown-item" href="/products/filter?category=seeds">Seeds</a></li>
+            <li><a class="dropdown-item" href="/products/filter?category=plants">Plants</a></li>
+            <li><a class="dropdown-item" href="/products/filter?category=agricultural tools">Agricultural Tools</a></li>
+            <li><a class="dropdown-item" href="/products/filter?category=irrigation tools">Irrigation Tools</a></li>
+          </ul>
+        </div>
+
+        <!-- Price Filter Dropdown -->
+        <div class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            data-bs-toggle="dropdown"
+          >
+            Filter by Price
+          </a>
+          <div class="dropdown-menu p-3" style="min-width: 250px">
+            <form action="/products/filter" method="GET">
+              <input type="hidden" name="category" value="<%= typeof category !== 'undefined' ? category : '' %>">
+              <div class="mb-2">
+                <label for="min" class="form-label">Min Price</label>
+                <input type="number" class="form-control" name="min" placeholder="₹ Min" />
+              </div>
+              <div class="mb-2">
+                <label for="max" class="form-label">Max Price</label>
+                <input type="number" class="form-control" name="max" placeholder="₹ Max" />
+              </div>
+              <button type="submit" class="btn btn-success w-100 mb-2">Filter</button>
+              <a href="/products" class="btn btn-outline-secondary w-100">Reset</a>
+            </form>
+          </div>
+        </div>
+
+        <!-- Cart -->
+        <a class="nav-link" href="/cart">
+          <i class="fa-solid fa-cart-plus"></i> Cart
+        </a>
+      </div>
+    </div>
+
+    <!-- Offcanvas for Mobile -->
+    <div
+      class="offcanvas offcanvas-end d-md-none"
+      tabindex="-1"
+      id="offcanvasNavbar"
+      aria-labelledby="offcanvasNavbarLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="navbar-nav">
+          <a class="nav-link" href="/products">Explore</a>
+          <a class="nav-link" href="/products/new">Add New Product</a>
+
+          <div class="dropdown my-2">
+            <a
+              class="dropdown-toggle nav-link"
+              href="#"
+              data-bs-toggle="dropdown"
+            >
+              Categories
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/products/filter?category=fertilizers">Fertilizers</a></li>
+              <li><a class="dropdown-item" href="/products/filter?category=seeds">Seeds</a></li>
+              <li><a class="dropdown-item" href="/products/filter?category=plants">Plants</a></li>
+              <li><a class="dropdown-item" href="/products/filter?category=agricultural tools">Agricultural Tools</a></li>
+              <li><a class="dropdown-item" href="/products/filter?category=irrigation tools">Irrigation Tools</a></li>
+            </ul>
+          </div>
+
+          <!-- Price Filter -->
+          <div class="dropdown my-2">
+            <a
+              class="dropdown-toggle nav-link"
+              href="#"
+              data-bs-toggle="dropdown"
+            >
+              Filter by Price
+            </a>
+            <div class="dropdown-menu p-3">
+              <form action="/products/filter" method="GET">
+                <input type="hidden" name="category" value="<%= typeof category !== 'undefined' ? category : '' %>">
+                <div class="mb-2">
+                  <label for="min" class="form-label">Min Price</label>
+                  <input type="number" class="form-control" name="min" placeholder="₹ Min" />
+                </div>
+                <div class="mb-2">
+                  <label for="max" class="form-label">Max Price</label>
+                  <input type="number" class="form-control" name="max" placeholder="₹ Max" />
+                </div>
+                <button type="submit" class="btn btn-success w-100 mb-2">Filter</button>
+                <a href="/products" class="btn btn-outline-secondary w-100">Reset</a>
+              </form>
+            </div>
+          </div>
+
+          <!-- Cart -->
+          <a class="nav-link" href="/cart">
+            <i class="fa-solid fa-cart-plus"></i> Cart
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+

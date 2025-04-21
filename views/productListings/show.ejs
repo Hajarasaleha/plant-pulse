@@ -1,0 +1,35 @@
+<% layout("/layouts/boilerplate") %>
+
+<body class="bg-light">
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-sm-12 col-md-8 col-lg-6 text-center">
+
+        <h3 class="mb-4 fw-bold"><%= product.title %></h3>
+
+        <img src="<%= product.image %>" alt="product-image" class="img-fluid rounded shadow-sm mb-4" style="max-height: 300px; object-fit: cover;">
+
+        <ul class="list-group mb-4 text-start">
+          <li class="list-group-item"><strong>Description:</strong> <%= product.description %></li>
+          <li class="list-group-item"><strong>Category:</strong> <%= product.category %></li>
+          <li class="list-group-item"><strong>Price:</strong> ₹<%= product.price.toLocaleString("en-IN") %></li>
+        </ul>
+
+        <div class="row g-2 justify-content-center">
+          <div class="col-12 col-md-6">
+            <form action="/cart" method="post">
+              <input type="hidden" name="productId" value="<%= product._id %>">
+              <button type="submit" class="btn btn-dark w-100">Add to Cart</button>
+            </form>
+          </div>
+          <div class="col-12 col-md-6">
+            <form action="/products/delete/<%= product._id %>?_method=DELETE" method="post">
+              <button type="submit" class="btn btn-danger w-100">Delete Product</button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
